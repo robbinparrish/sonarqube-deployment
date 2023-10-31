@@ -1,0 +1,23 @@
+#
+# .gitignore file - Ignore everything and recursive allow them.
+#
+
+#
+# Ignore everything.
+#
+*
+
+#
+# Recursive allow.
+#
+!.gitignore
+!README.md
+!docker-compose.yml
+!configs
+!README.ssl-certs.md
+!configs/certs/
+!configs/certs/sonarqube.mydomain.com.crt
+!configs/certs/sonarqube.mydomain.com.key
+!configs/certs/README.md
+!configs/nginx/
+!configs/nginx/default.conf

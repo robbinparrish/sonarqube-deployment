@@ -1,0 +1,72 @@
+#
+# docker-compose file for deploying SonarQube in Docker.
+#
+
+version: '3.8'
+services:
+  sonarqube:
+    image: sonarqube:9.9.2-community
+    container_name: sonarqube
+    environment:
+      - TZ="UTC"
+      - SONAR_JDBC_URL=jdbc:postgresql://pgsql-db:5432/sonar-db
+      - SONAR_JDBC_USERNAME=postgres
+      - SONAR_JDBC_PASSWORD=YOUR_DB_PASSWORD
+      - ES_JAVA_OPTS="-Xms512m -Xmx4g"
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+      - SONAR_TELEMETRY_ENABLE=false
+    volumes:
+      - ./sonarqube-data/data:/opt/sonarqube/data
+      - ./sonarqube-data/logs:/opt/sonarqube/logs
+      - ./sonarqube-data/extensions:/opt/sonarqube/extensions
+      - ./sonarqube-data/bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+    restart: always
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 65535
+        hard: 65535
+      memlock:
+        soft: -1
+        hard: -1
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "10"
+    depends_on:
+      - pgsql-db
+  pgsql-db:
+    image: postgres:16.0
+    container_name: pgsql-db
+    environment:
+      - TZ="UTC"
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=YOUR_DB_PASSWORD
+      - POSTGRES_DB=sonar-db
+    volumes:
+      - ./pgsql-db/data:/var/lib/postgresql/data
+      - ./pgsql-db/log:/var/log/postgresql
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "10"
+  nginx-reverse-proxy:
+    image: nginx:1.25.3
+    container_name: nginx-reverse-proxy
+    environment:
+      - TZ="UTC"
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./configs/certs:/etc/pki/tls/configs-certs
+      - ./configs/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "10"
