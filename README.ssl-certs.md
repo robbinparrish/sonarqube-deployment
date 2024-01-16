@@ -15,5 +15,5 @@ openssl req -new -key sonarqube.mydomain.com.key -out sonarqube.mydomain.com.csr
 openssl x509 -in  sonarqube.mydomain.com.csr -out  sonarqube.mydomain.com.crt -req -signkey  sonarqube.mydomain.com.key -days 365
 ```
 
-### Once done copy these certifcates to certs directory ( `configs/certs` ) before running container.
+### Once done copy these certificates to certs directory ( `configs/certs` ) before running container.
 
