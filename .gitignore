@@ -21,3 +21,5 @@
 !configs/certs/README.md
 !configs/nginx/
 !configs/nginx/default.conf
+!configs/backup-and-restore.md
+!configs/upgrading-sonarqube.md
