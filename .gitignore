@@ -19,7 +19,14 @@
 !configs/certs/sonarqube.mydomain.com.crt
 !configs/certs/sonarqube.mydomain.com.key
 !configs/certs/README.md
+!configs/automatic-backup/
+!configs/automatic-backup/sonarqube-deployment-backup.*
+!configs/automatic-backup/README.md
 !configs/nginx/
 !configs/nginx/default.conf
 !configs/backup-and-restore.md
 !configs/upgrading-sonarqube.md
+!sonarqube-data
+!sonarqube-data/extensions/
+!sonarqube-data/extensions/plugins/
+!sonarqube-data/extensions/plugins/.gitkeep

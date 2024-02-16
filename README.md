@@ -19,6 +19,16 @@ mkdir -p ./pgsql-db/backups
 chown -R 1000:1000 ./pgsql-db/backups
 ```
 
+## Docker Compose Version.
+Always validate that [docker-compose](https://github.com/docker/compose/releases/) version is latest.
+If not then use the latest released version. As of updating this document `v2.24.0` was latest released version.
+
+### SonarQube CE branch plugin.
+This setup uses an additional plugin for branch analysis. Before proceeding further download the compatible version jar file and copy it to `sonarqube-data/extensions/plugins/` directory.  
+https://github.com/mc1arke/sonarqube-community-branch-plugin?tab=readme-ov-file#compatibility
+
+Update the corresponding version in the [docker-compose.yml](./docker-compose.yml) file.
+
 ### Starting the container.
 ```bash
 docker-compose up -d
@@ -42,3 +52,5 @@ docker-compose logs -f
 [Backup and Restore](./configs/backup-and-restore.md)
 
 [Upgrading SonarQube](./configs/upgrading-sonarqube.md)
+
+[Generates Analysis Reports from SonarQube Web API](https://github.com/cnescatlab/sonar-cnes-report?tab=readme-ov-file#advanced-usage-standalone)

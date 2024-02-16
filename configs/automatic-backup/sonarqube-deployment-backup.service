@@ -1,0 +1,5 @@
+[Unit]
+Description=SonarQube Deployment Backup
+
+[Service]
+ExecStart=/usr/bin/sonarqube-deployment-backup.sh

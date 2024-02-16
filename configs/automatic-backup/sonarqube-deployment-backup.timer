@@ -1,0 +1,10 @@
+[Unit]
+Description=SonarQube Deployment Backup
+
+[Timer]
+# Run every night at 1 AM.
+OnCalendar=*-*-* 01:00:00
+Unit=sonarqube-deployment-backup.service
+
+[Install]
+WantedBy=timers.target
