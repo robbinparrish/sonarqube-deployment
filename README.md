@@ -19,6 +19,10 @@ mkdir -p ./pgsql-db/backups
 chown -R 1000:1000 ./pgsql-db/backups
 ```
 
+## Docker Compose Version.
+Always validate that [docker-compose](https://github.com/docker/compose/releases/) version is latest.
+If not then use the latest released version. As of updating this document `v2.24.0` was latest released version.
+
 ### Starting the container.
 ```bash
 docker-compose up -d
@@ -42,3 +46,5 @@ docker-compose logs -f
 [Backup and Restore](./configs/backup-and-restore.md)
 
 [Upgrading SonarQube](./configs/upgrading-sonarqube.md)
+
+[Generates Analysis Reports from SonarQube Web API](https://github.com/cnescatlab/sonar-cnes-report?tab=readme-ov-file#advanced-usage-standalone)
