@@ -13,7 +13,7 @@ Once the latest released version is identified we can update the corresponding v
 This setup uses an additional plugin for branch analysis. When upgrading to the new version make sure to also upgrade this plugin as well.
 https://github.com/mc1arke/sonarqube-community-branch-plugin?tab=readme-ov-file#compatibility
 
-Download the compatible version jar file and copy it to `sonarqube-data/extensions/plugins/`.  
+Download the compatible version jar file and copy it to `sonarqube-data/extensions/plugins/` directory.  
 `Do not forget to remove the old files.`
 
 Update the corresponding version in the [docker-compose.yml](./../docker-compose.yml) file.
