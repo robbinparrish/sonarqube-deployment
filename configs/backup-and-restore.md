@@ -74,3 +74,4 @@ docker-compose logs -f
 
 #### Once Backup is restored login to the SonarQube instance and verify that all configurations and data are restored.
 
+[Automatic Backup Setup](./automatic-backup/README.md)

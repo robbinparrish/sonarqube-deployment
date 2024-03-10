@@ -21,5 +21,5 @@ cp sonarqube-deployment-backup.timer sonarqube-deployment-backup.service /etc/sy
 ## Enable the timer.
 ```bash
 systemctl daemon-reload
-systemctl enable sonarqube-deployment-backup.timer
+systemctl enable --now sonarqube-deployment-backup.timer
 ```
